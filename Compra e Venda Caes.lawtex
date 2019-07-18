@@ -5,11 +5,11 @@
 	},
 	+[cnpj] : String where ("\d\d.\d\d\d.\d\d\d/\d\d\d-\d\d") {
 		name: CNPJ
-		request: "Insira o CNPJ da Empresa"
+		request: "Insira o CNPJ da Empresa (somente números)"
 	},
 	+[inscricaoEstadual] : Integer {
 		name: "Inscrição Estadual"
-		request: "Insira a Inscrição Estadual da Empresa (somente números)"
+		request: "Insira a Inscrição Estadual do Vendedor (somente números)"
 	},
 	+[endereco]
 		+[estado] : List ("Acre (AC)", "Alagoas (AL)", "Amazonas (AM)", "Amapá (AP)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)") {
@@ -74,15 +74,10 @@
 			name: "Órgão Emissor do RG - Representante Legal"
 			request: "Insira o órgão emissor RG do Representante Legal do Vendedor (somente números)"
 		}
-		[cpfNumero]
-		[endereco]
-			[logradouroTipo]
-			[logradouro]
-			[numero]
-			[bairro]
-			[cep]
-			[municipio]
-			[estado]
+		+[cpfNumero] : String where("\d\d\d.\d\d\d.\d\d\d-\d\d") {
+			name: "CPF - Representante Legal"
+			request: "Insira o CPF do Representante Legal do Vendedor"
+		},
 <comprador>
 	+[nome] : String {
 		name = "Comprador"
