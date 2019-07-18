@@ -87,27 +87,34 @@
 	+[nome] : String {
 		name = "Comprador"
 		request = "Insira nome completo do comprador"
-	}
+	},
 	+[nacionalidade] : String {
 		name = "Nacionalidade"
 		request = "Insira nacionalidade do comprador"
-	}
+	},
 	+[estadoCivil]: List ("Solteiro", "Casado", "Convivente estável", "Divorciado", Viúvo") {
 		name = "Estado civil"
 		request = "Indique o estado civil"
 		atomic = true
-	}
+	},
 	+[profissao] : String { 
 		name = "Profissão"
 		request = "Insira profissão do comprador"
-	}
-	+[rg] : String {
-		name = "RG"
-		request = "Indique o RG do comprador"
-	}
-	+[cpf]
-	[endereco]
-		[rua]
+	},
+	+[rgNumero] : String {
+		name = "RG - Comprador"
+		request = "Indique o RG do comprador (somente números)"
+	},
+	+[rgEmissor] : String {
+		name: "Órgão Emissor do RG - Comprador"
+		request: "Insira o órgão emissor RG do Comprador"
+	},
+	+[cpf] : String {
+		name: "CPF - Comprador"
+		request: "Insira o CPF do comprador (somente números)"
+	},
+	+[endereco] : String {
+			[rua]
 		[numero]
 		[bairro]
 		[cep]
