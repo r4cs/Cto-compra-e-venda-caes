@@ -1,0 +1,67 @@
+<vendedor>
+	[nome] : String {
+
+	}
+	[cnpj] :
+	[inscricaoEstadual] :
+	[endereco]
+		[municipio]
+		[logradouroTipo]
+		[logradouro]
+		[numero]
+		[bairro]
+		[cep]
+		[estado]
+	[representante]
+		[nome]
+		[nacionalidade]
+		[estadoCivil]
+		[profissão]
+		[rgNumero]
+		[cpfNumero]
+		[endereco]
+			[logradouroTipo]
+			[logradouro]
+			[numero]
+			[bairro]
+			[cep]
+			[municipio]
+			[estado]
+<comprador>
+	[nome]
+	[nacionalidade]
+	[estadoCivil]
+	[profissao]
+	[rg]
+	[cpf]
+	[endereco]
+		[rua]
+		[numero]
+		[bairro]
+		[cep]
+		[cidade]
+		[estado]
+
+<preco>
+	[valorTotal]
+	[formaPgto] #/* precisamos lidar com eventual vetor por aqui */
+		[cartao]
+			[numero]
+			[bandeira]
+			[parcelas]
+		[cheque]
+			[numero]
+			[banco]
+			[agencia]
+			[contaCorrente]
+			[preDatados]
+	[meioPgto]
+<contratoVias>
+<dataExtenso>
+
+<testemunha1>
+	[nome] 
+	[rg]
+<testemunha2>
+	[nome]
+	[rg]
