@@ -3,11 +3,11 @@
 		name: "Nome do Vendedor"
 		request: "Insira a Razão Social do Vendedor"
 	}
-	[cnpj] : String where ("\d\d.\d\d\d.\d\d\d/\d\d\d-\d\d") {
+	+[cnpj] : String where ("\d\d.\d\d\d.\d\d\d/\d\d\d-\d\d") {
 		name: CNPJ
 		request: "Insira o CNPJ da Empresa"
 	}
-	[inscricaoEstadual] : Integer {
+	+[inscricaoEstadual] : Integer {
 		name: "Inscrição Estadual"
 		request: "Insira a Inscrição Estadual da Empresa (somente números)"
 	}
