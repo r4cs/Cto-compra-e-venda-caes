@@ -1,9 +1,16 @@
 <vendedor>
-	[nome] : String {
-
+	+[nome] : String {
+		name: "Nome do Vendedor"
+		request: "Insira a Razão Social do Vendedor"
 	}
-	[cnpj] :
-	[inscricaoEstadual] :
+	[cnpj] : String where ("\d\d.\d\d\d.\d\d\d/\d\d\d-\d\d") {
+		name: CNPJ
+		request: "Insira o CNPJ da Empresa"
+	}
+	[inscricaoEstadual] : Integer {
+		name: "Inscrição Estadual"
+		request: "Insira a Inscrição Estadual da Empresa (somente números)"
+	}
 	[endereco]
 		[municipio]
 		[logradouroTipo]
@@ -15,7 +22,11 @@
 	[representante]
 		[nome]
 		[nacionalidade]
-		[estadoCivil]
+		[estadoCivil] : List ("Solteiro", "Casado", "Convivente estável", "Divorciado", "Viúvo") {
+			name = "Estado civil"
+			request = "Indique o estado civil"
+			atomic = true
+		}
 		[profissão]
 		[rgNumero]
 		[cpfNumero]
