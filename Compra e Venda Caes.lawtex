@@ -2,33 +2,78 @@
 	+[nome] : String {
 		name: "Nome do Vendedor"
 		request: "Insira a Razão Social do Vendedor"
-	}
+	},
 	+[cnpj] : String where ("\d\d.\d\d\d.\d\d\d/\d\d\d-\d\d") {
 		name: CNPJ
 		request: "Insira o CNPJ da Empresa"
-	}
+	},
 	+[inscricaoEstadual] : Integer {
 		name: "Inscrição Estadual"
 		request: "Insira a Inscrição Estadual da Empresa (somente números)"
-	}
-	[endereco]
-		[municipio]
-		[logradouroTipo]
-		[logradouro]
-		[numero]
-		[bairro]
-		[cep]
-		[estado]
-	[representante]
-		[nome]
-		[nacionalidade]
-		[estadoCivil] : List ("Solteiro", "Casado", "Convivente estável", "Divorciado", "Viúvo") {
+	},
+	+[endereco]
+		+[estado] : List ("Acre (AC)", "Alagoas (AL)", "Amazonas (AM)", "Amapá (AP)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)") {
+			name: "Endereço - Estado"
+			request: "Informe a UF na qual está localizado o Vendedor"
+			atomic: true
+		},
+		+[municipio] : String {
+			name: "Endereço - Município"
+			request: "Informe o município na qual está localizado o Vendedor"
+		},
+		+[logradouroTipo] : List ("Alameda", "Avenida", "Estrada", "Rua", "Travessa", "Vila") {
+			name: "Tipo de Logradouro"
+			request: "Indique o tipo de logradouro do endereço do Vendedor"
+			atomic: true
+		},
+		+[logradouro] : String {
+			name: "Logradouro"
+			request: "Transcreva o logradouro do endereço do Vendedor"
+		},
+		+[numero] : Integer {
+			name: "Número"
+		},
+		&[complemento] : String {
+			name: "Complemento"
+			request: "Insira informações complementares"
+			help: "apartamento, bloco, quadra, etc."
+		}
+		+[bairro] : String {
+			name: "Bairro"
+			request: "Informe o Bairro do Vendedor"
+		}
+		+[cep] : String where("\d\d\d\d\d-\d\d\d") {
+			name: "CEP"
+			request: "Insira o CEP da localidade do Vendedor (apenas numeros)"
+		},
+	+[representante]
+		+[nome] : String {
+		name: "Nome do Representante Legal"
+		request: "Insira o nome do Representante Legal do Vendedor"
+		},
+		+[nacionalidade] : String {
+			name: "Nacionalidade - Representante Legal"
+			request: "Informe a nacionalidade do Representante Legal do Vendedor"
+			default: "brasileiro(a)"
+		},
+		+[estadoCivil] : List ("Solteiro(a)", "Casado(a)", "Convivente", "Divorciado(a)", "Viúvo(a)") {
 			name = "Estado civil"
 			request = "Indique o estado civil"
 			atomic = true
+		},
+		+[profissão] : String {
+			name: "Profissão - Representante Legal"
+			request: "Informe a profissão do Representante Legal do Vendedor"
+			default: "Empresário(a)"
+		},
+		+[rgNumero] : Integer {
+			name: "RG - Representante Legal"
+			request: "Insira o RG do Representante Legal do Vendedor (somente números)"
+		},
+		+[rgEmissor] : String {
+			name: "Órgão Emissor do RG - Representante Legal"
+			request: "Insira o órgão emissor RG do Representante Legal do Vendedor (somente números)"
 		}
-		[profissão]
-		[rgNumero]
 		[cpfNumero]
 		[endereco]
 			[logradouroTipo]
