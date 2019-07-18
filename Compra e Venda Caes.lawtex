@@ -169,21 +169,18 @@
 		+[obito]
 
 <preco>
-	+[valorTotal]: Currency {
-		name = "Valor total da compra: "
-		request = "Insira o valor acordado na compra: "
-	},
+	+[valorTotal]
 	+[formaPgto]: List ("À vista", "Parcelado") {
 		name = "Forma de pagamento"
 		request = "Escolha a forma de pagamento: "
 		atomic = true
-	},
+	}
 	if ([formaPgto] == "Parcelado") {
 		+[parcelas]: Integer {
 			name = "Parcelas"
 			request = "Insira o número de parcelas desejado: "
 		}
-	},
+	}
 	+[meioPgto]: List ("dinheiro", "cartão", "cheque") {
 		name = "Meio de pagamento"
 		request = "Selecione o meio de pagamento"
@@ -191,7 +188,7 @@
 	if ([meioPgto] == "dinheiro") {
 		+[dinheiro]: Currency {
 		}
-	},
+	}
 	if ([meioPgto] == "cartão") {
 		+[cartao]: Struct {
 			name = "Cartão"
@@ -211,7 +208,7 @@
 				}
 			}
 		}	
-	},
+	}
 	
 	if ([meioPgto] == "cheque") {				
 		+[cheque] Struct {
@@ -221,30 +218,40 @@
 				+[numero]: Currency {
 					name = "Número do cheque"
 					request = "Insira o número do cheque: "
-				},
+				}
 				+[banco]: String {
 					name = "Banco"
 					request = "Informe qual o Banco emitente do cheque: "
-				},
+				}
 				+[agencia]: Integer {
 					name = "Agência"
 					request = "Informe a Agência: "
 					help = "Somente em números"
-				},
+				}
 				+[contaCorrente]: Integer {
 					name = "Conta Corrente"
 					request = "Informe o número da conta coerrente: "
-				},
+				}
 				+[preDatados]: Integer {
 					name = "Parcelas"
 					request = "Informe a quantidade de parcelas: "
 				}
 			}
 		}
-	},
+	}
+
 
 <contratoVias>
+	+[contratoVias] : Integer {
+		name = "Número de vias"
+		request = "Indique o número de vias do contrato expedidas"
+	}
 <dataExtenso>
+	+[dataExtenso] : Date {
+	name = "Data"
+	request = "Indicar a data de expedição do contrato por extenso"
+	}
+
 
 <testemunha1>
 	+[nome] : String {
