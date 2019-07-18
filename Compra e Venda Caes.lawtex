@@ -145,6 +145,29 @@
 		},
 	},
 
++<cao>
+	+[quantidade] : Integer {
+		name: "Quantidade de Cães"
+		request: "Informe a quantidade de cães negociados"
+	}
+	[raca] : List ("Bulldog Francês", "Golden Retriever", "Labrador Retriever", "Maltês", "Pinscher", "Poodle", "Pug", "Shih-Tzu", "Yorkshire") {
+		name: "Raça dos Cães"
+		request: "Informe a raça dos cães"
+		atomic: true
+	}
+	+[cor]
+	&[pedigree]
+	+[microchip]
+	+[nascimento]
+		+[municipio]
+		+[data] : Date {
+			name:
+			request
+		},
+	+[prazo]
+		+[vacinacao] 
+		+[obito]
+
 <preco>
 	+[valorTotal]
 	+[formaPgto]: List ("À vista", "Parcelado") {
