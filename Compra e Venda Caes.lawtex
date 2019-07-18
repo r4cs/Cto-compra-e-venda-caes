@@ -117,19 +117,77 @@
 		[estado]
 
 <preco>
-	[valorTotal]
-	[formaPgto] #/* precisamos lidar com eventual vetor por aqui */
-		[cartao]
-			[numero]
-			[bandeira]
-			[parcelas]
-		[cheque]
-			[numero]
-			[banco]
-			[agencia]
-			[contaCorrente]
-			[preDatados]
-	[meioPgto]
+	+[valorTotal]
+	+[formaPgto]: List ("À vista", "Parcelado") {
+		name = "Forma de pagamento"
+		request = "Escolha a forma de pagamento: "
+		atomic = true
+	}
+	if ([formaPgto] == "Parcelado") {
+		+[parcelas]: Integer {
+			name = "Parcelas"
+			request = "Insira o número de parcelas desejado: "
+		}
+	}
+	+[meioPgto]: List ("dinheiro", "cartão", "cheque") {
+		name = "Meio de pagamento"
+		request = "Selecione o meio de pagamento"
+		}
+	if ([meioPgto] == "dinheiro") {
+		+[dinheiro]: Currency {
+		}
+	}
+	if ([meioPgto] == "cartão") {
+		+[cartao]: Struct {
+			name = "Cartão"
+			request = "Insira as informações de pagamento do cartão: "
+			fields { 
+				+[numero]: String where ("\d\d\d\d.\d\d\d\d.\d\d\d\d") {
+					name = "Número do Cartão"
+					request = "Insira o número do cartão: "
+				},
+				+[bandeira]: String {
+					name = "Bandeira do Cartão"
+					request = "Indique a bandeira do cartão de crédito: "
+				},
+				+[parcelas]: Interger {
+					name = "Número de parcelas"
+					request = "Insira o número de parcelas: "
+				}
+			}
+		}	
+	}
+	
+	if ([meioPgto] == "cheque") {				
+		+[cheque] Struct {
+			name = "Cheque"
+			request = "Insira as informações de pagamento no cheque: "
+			fields {
+				+[numero]: Currency {
+					name = "Número do cheque"
+					request = "Insira o número do cheque: "
+				}
+				+[banco]: String {
+					name = "Banco"
+					request = "Informe qual o Banco emitente do cheque: "
+				}
+				+[agencia]: Integer {
+					name = "Agência"
+					request = "Informe a Agência: "
+					help = "Somente em números"
+				}
+				+[contaCorrente]: Integer {
+					name = "Conta Corrente"
+					request = "Informe o número da conta coerrente: "
+				}
+				+[preDatados]: Integer {
+					name = "Parcelas"
+					request = "Informe a quantidade de parcelas: "
+				}
+			}
+		}
+	}
+
 <contratoVias>
 <dataExtenso>
 
